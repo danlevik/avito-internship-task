@@ -14,6 +14,10 @@ interface FilmType {
   name?: string;
   description?: string;
   type?: string;
+  poster?: {
+    url?: string;
+    previewUrl?: string;
+  }
   rating?: {
     kp: number;
     imdb: number;
@@ -74,6 +78,7 @@ export const Film = () => {
 
   return (
     <>
+      <Button onClick={handleGoBack}>Назад</Button>
       {!movieData.loading && !movieData.error && (
         <>
           <Row gutter={64}>
@@ -83,7 +88,7 @@ export const Film = () => {
             </Col>
             <Divider />
             <Col span={24}>
-              <PostersList movieId={movieData.data.id} limit={1} />
+              <PostersList mainPoster={movieData.data.poster} movieId={movieData.data.id} limit={1} />
             </Col>
             <Divider />
             <Col span={24}>
@@ -118,7 +123,10 @@ export const Film = () => {
             <Divider />
             <Col span={24}>
               <h2>Серии и сезоны</h2>
-              <SeriesList movieId={movieData.data.id} limit={handlescreenWidthChange(width) }/>
+              <SeriesList
+                movieId={movieData.data.id}
+                limit={handlescreenWidthChange(width)}
+              />
             </Col>
             <Divider />
             <Col span={24}>

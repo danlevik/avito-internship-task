@@ -23,12 +23,5 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<FilmsList />}/>
-        <Route path="/movie/:id" element={<Film />}/>
-      </Routes>
-    </BrowserRouter>
-  </React.StrictMode>
+  <App />
 );

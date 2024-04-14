@@ -33,6 +33,8 @@ export const FilmsList = () => {
     page: 1,
   });
 
+  const navigate = useNavigate();
+
   const { height, width } = useWindowDimensions();
 
   const [searchParams, setSearchParams] = useSearchParams();

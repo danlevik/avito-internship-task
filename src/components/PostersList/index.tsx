@@ -15,7 +15,7 @@ interface PostersListType {
   pages?: number;
 }
 
-export const PostersList = ({ movieId, limit }) => {
+export const PostersList = ({ movieId, limit, mainPoster }) => {
   const [postersData, setPostersData] = useState({
     data: {} as PostersListType,
     loading: true,
@@ -40,9 +40,9 @@ export const PostersList = ({ movieId, limit }) => {
     <>
       {!postersData.error && !postersData.loading && (
         <>
-          {postersData.data.docs.length > 0 ? (
+          {postersData.data.docs.concat({...mainPoster, id: 0}).length > 0 ? (
             <Carousel limit={limit}>
-              {postersData.data.docs.map((obj) => (
+              {postersData.data.docs.concat({...mainPoster, id: 0}).map((obj) => (
                 <div key={obj.id}
                   style={{
                     width: `${100 / limit}%`,

@@ -6,7 +6,7 @@ export const MovieCard = ({ obj }: { obj: FilmCardType }) => {
   const navigate = useNavigate();
 
   const handleNavigation = () => {
-    navigate(`/movie/${obj.id}`, { replace: true})
+    navigate(`/movie/${obj.id}`)
   }
 
   return (
