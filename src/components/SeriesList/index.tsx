@@ -58,7 +58,7 @@ export const SeriesList = ({
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetchQuery(
-        `v1.4/season?page=${page}&limit=${250}&movieId=${movieId}`
+        `v1.4/season?page=1&limit=${250}&movieId=${movieId}`
       );
       if (response.error)
         setSeasonData({ data: {}, loading: false, error: true });
