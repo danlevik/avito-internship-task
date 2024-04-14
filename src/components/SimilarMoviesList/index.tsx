@@ -15,7 +15,7 @@ export const SimilarMoviesList = ({
     <>
       <Carousel limit={limit}>
         {items.map((obj) => (
-          <div
+          <div key={obj.id}
             style={{
               width: `${100 / limit}%`,
               flexShrink: 0,

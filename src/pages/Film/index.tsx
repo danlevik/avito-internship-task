@@ -7,6 +7,7 @@ import useWindowDimensions from "../../features/hooks/useWindowDimensions";
 import { ReviewsList } from "../../components/ReviewsList";
 import { SimilarMoviesList } from "../../components/SimilarMoviesList";
 import { PostersList } from "../../components/PostersList";
+import { SeriesList } from "../../components/SeriesList";
 
 interface FilmType {
   id?: number;
@@ -113,6 +114,11 @@ export const Film = () => {
                 limit={handlescreenWidthChange(width)}
                 movieId={movieData.data.id}
               />
+            </Col>
+            <Divider />
+            <Col span={24}>
+              <h2>Серии и сезоны</h2>
+              <SeriesList movieId={movieData.data.id} limit={handlescreenWidthChange(width) }/>
             </Col>
             <Divider />
             <Col span={24}>
