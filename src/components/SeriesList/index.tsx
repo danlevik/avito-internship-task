@@ -1,36 +1,7 @@
-import { Button, Card, Col, Divider, Modal, Pagination, Row } from "antd";
+import { Button, Card, Col, Divider, Pagination, Row } from "antd";
 import { useEffect, useState } from "react";
 import { fetchQuery } from "../../features/api";
-
-interface SeasonType {
-  id?: number;
-  number?: number;
-  episodesCount?: number;
-  episodes?: {
-    number?: number;
-    name?: string;
-    still?: {
-      previewUrl?: string;
-      url?: string;
-    };
-  }[];
-}
-
-interface FlattenSeriesType {
-  seasonId?: number;
-  seasonNumber?: number;
-  episodeNumber?: number;
-  still?: {
-    previewUrl?: string;
-    url?: string;
-  };
-  episodeName?: string;
-}
-
-interface SeasonsListType {
-  docs?: SeasonType[];
-  total?: number;
-}
+import { FlattenSeriesType, SeasonsListType } from "../../features/types";
 
 export const SeriesList = ({
   limit,
@@ -116,7 +87,11 @@ export const SeriesList = ({
                       span={24 / limit}
                     >
                       <Card
-                        cover={obj?.still?.previewUrl && <img src={obj.still.previewUrl} />}
+                        cover={
+                          obj?.still?.previewUrl && (
+                            <img src={obj.still.previewUrl} />
+                          )
+                        }
                         styles={{ body: { height: "100%" } }}
                         style={{
                           height: "100%",

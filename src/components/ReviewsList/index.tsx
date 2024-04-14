@@ -1,21 +1,9 @@
 import { Button, Card, Col, Divider, Modal, Pagination, Row } from "antd";
 import { useEffect, useState } from "react";
 import { fetchQuery } from "../../features/api";
+import { ReviewType, ReviewsListType } from "../../features/types";
 
-interface ReviewType {
-  id?: number;
-  movieId?: number;
-  title?: string;
-  type?: string;
-  review?: string;
-  author?: string;
-  date?: string;
-}
 
-interface ReviewsListType {
-  docs?: ReviewType[];
-  total?: number;
-}
 
 export const ReviewsList = ({
   limit,

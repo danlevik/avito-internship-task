@@ -1,19 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchQuery } from "../../features/api";
 import { Carousel } from "../Carousel";
-import { Image } from "antd";
-
-interface PosterType {
-  id?: number;
-  url?: string;
-  previewUrl?: string;
-}
-
-interface PostersListType {
-  docs?: PosterType[];
-  total?: number;
-  pages?: number;
-}
+import { PostersListType } from "../../features/types";
 
 export const PostersList = ({ movieId, limit, mainPoster }) => {
   const [postersData, setPostersData] = useState({
@@ -40,23 +28,28 @@ export const PostersList = ({ movieId, limit, mainPoster }) => {
     <>
       {!postersData.error && !postersData.loading && (
         <>
-          {postersData.data.docs.concat({...mainPoster, id: 0}).length > 0 ? (
+          {postersData.data.docs.concat({ ...mainPoster, id: 0 }).length > 0 ? (
             <Carousel limit={limit}>
-              {postersData.data.docs.concat({...mainPoster, id: 0}).map((obj) => (
-                <div key={obj.id}
-                  style={{
-                    width: `${100 / limit}%`,
-                    height: "400px",
-                    flexShrink: 0,
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <img alt="Постер" src={obj.url} />
-                </div>
-              ))}
+              {postersData.data.docs
+                .concat({ ...mainPoster, id: 0 })
+                .map((obj) => (
+                  <div
+                    key={obj.id}
+                    style={{
+                      width: `${100 / limit}%`,
+                      height: "400px",
+                      flexShrink: 0,
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <img alt="Постер" src={obj.url} />
+                  </div>
+                ))}
             </Carousel>
-          ) : <h3>Постеров не найдено</h3>}
+          ) : (
+            <h3>Постеров не найдено</h3>
+          )}
         </>
       )}
     </>

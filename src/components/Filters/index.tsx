@@ -2,12 +2,10 @@ import {
   Button,
   Col,
   DatePicker,
-  Divider,
   Form,
   Select,
   Slider,
   SliderSingleProps,
-  Space,
 } from "antd";
 import { useEffect, useState } from "react";
 import { fetchQuery } from "../../features/api";

@@ -1,4 +1,4 @@
-import { Button, Carousel, Col, Divider, Row } from "antd";
+import { Button, Col, Divider, Row } from "antd";
 import { useEffect, useState } from "react";
 import { fetchQuery } from "../../features/api";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,38 +8,7 @@ import { ReviewsList } from "../../components/ReviewsList";
 import { SimilarMoviesList } from "../../components/SimilarMoviesList";
 import { PostersList } from "../../components/PostersList";
 import { SeriesList } from "../../components/SeriesList";
-
-interface FilmType {
-  id?: number;
-  name?: string;
-  description?: string;
-  type?: string;
-  poster?: {
-    url?: string;
-    previewUrl?: string;
-  }
-  rating?: {
-    kp: number;
-    imdb: number;
-  };
-  persons?: {
-    id: number;
-    photo: string;
-    name: string;
-    enName: string;
-    description: string;
-    profession: string;
-  }[];
-  similarMovies?: {
-    id: number;
-    name: string;
-    alternativeName: string;
-    poster: {
-      url: string;
-      previewUrl: string;
-    };
-  }[];
-}
+import { FilmType } from "../../features/types";
 
 export const Film = () => {
   let { id } = useParams();
@@ -88,7 +57,11 @@ export const Film = () => {
             </Col>
             <Divider />
             <Col span={24}>
-              <PostersList mainPoster={movieData.data.poster} movieId={movieData.data.id} limit={1} />
+              <PostersList
+                mainPoster={movieData.data.poster}
+                movieId={movieData.data.id}
+                limit={1}
+              />
             </Col>
             <Divider />
             <Col span={24}>

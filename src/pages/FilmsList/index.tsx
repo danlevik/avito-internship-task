@@ -1,23 +1,15 @@
 import {
-  Card,
-  Carousel,
   Col,
   Divider,
-  Image,
   Input,
   Pagination,
   Row,
 } from "antd";
 import { fetchQuery } from "../../features/api";
 import { useEffect, useState } from "react";
-
-import type { MenuProps } from "antd";
-import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import { Filters } from "../../components/Filters";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { getSearchParamsForLocation } from "react-router-dom/dist/dom";
 import useWindowDimensions from "../../features/hooks/useWindowDimensions";
-import { log } from "console";
 import { FilmsListType } from "../../features/types";
 import { MovieCard } from "../../components/MovieCard";
 
@@ -32,8 +24,6 @@ export const FilmsList = () => {
     limit: 10,
     page: 1,
   });
-
-  const navigate = useNavigate();
 
   const { height, width } = useWindowDimensions();
 
